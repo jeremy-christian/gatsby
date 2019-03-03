@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Site`,
+    title: `Eberron Campaign`,
     author: `Jeremy Christian`,
     description: `A starter blog demonstrating what Jeremy can (can't) do with Gatsby.`,
     siteUrl: `jemery.dev`,
