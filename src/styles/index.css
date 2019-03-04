@@ -18,6 +18,15 @@ ul {
   margin-bottom: 10px;
 }
 
+blockquote {
+  font-size: 16px;
+  line-height: 18px;
+}
+
+table {
+  font-size: 14px;
+  line-height: 16px;
+}
 .square {
   background: #fff;
   border: 1px solid #999;
