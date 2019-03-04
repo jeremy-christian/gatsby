@@ -100,4 +100,4 @@ Outside the established influence of the twelve houses, the technology and infra
 | Storm       | Lyrandar _(dragon)_  | Half-Elf        |                 Air and Sea Transportation |
 | Warding     | Kundarak _(ram)_     | Dwarf           |                  Banking, Storage, Prisons |
 
-Okay, that was fun! I've ripped all of this from the Eberron sourcebook, and this was mostly an exercise to get me going, **so nothing is set in stone** and of course, **you don't have to remember any of it**. But if you're still up for playing I hope theres enough stolen material here for you guys to flesh a character out.
+Okay, that was fun! I've ripped all of this from the Eberron sourcebook, and this was mostly an exercise to get me going, **so nothing is set in stone** and of course, **you don't have to remember any of it**. But if you're still up for playing I hope there's enough stolen material here for you guys to flesh a character out.

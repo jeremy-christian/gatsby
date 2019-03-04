@@ -19,13 +19,13 @@ ul {
 }
 
 blockquote {
-  font-size: 16px;
-  line-height: 18px;
+  font-size: 16px !important;
+  line-height: 18px !important;
 }
 
 table {
-  font-size: 14px;
-  line-height: 16px;
+  font-size: 14px !important;
+  line-height: 16px !important;
 }
 .square {
   background: #fff;
