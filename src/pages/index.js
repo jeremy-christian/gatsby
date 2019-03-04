@@ -6,6 +6,7 @@ import Layout from "../components/layout"
 import Game from "../components/tic-tac-toe"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
+import "../styles/index.css"
 
 class BlogIndex extends React.Component {
   render() {
