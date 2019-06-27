@@ -17,8 +17,7 @@ ul {
 .status {
   margin-bottom: 10px;
 }
-
-blockquote {
+±§ blockquote {
   font-size: 16px !important;
   line-height: 18px !important;
 }
@@ -40,8 +39,21 @@ table {
   padding: 0;
   text-align: center;
   width: 34px;
+  text-transform: uppercase;
 }
 
+.square.TL {
+  background-color: #1798d2;
+}
+.square.TW {
+  background-color: #e13328;
+}
+.square.DL {
+  background-color: #97cce4;
+}
+.square.DW {
+  background-color: #efada9;
+}
 .square:focus {
   outline: none;
 }
