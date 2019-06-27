@@ -1,3 +1,5 @@
+import ScrabbleWordList from "../utils/ScrabbleWordList"
+
 var scrabbleWordFinder = (() => {
   var ScrabbleWordFinder = function() {
     this.dict = new ScrabbleDictionary(ScrabbleWordList)

@@ -8,6 +8,8 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "dependencies": {
+    "moment": "2",
+    "antd": "latest",
     "gatsby": "^2.1.19",
     "gatsby-image": "^2.0.30",
     "gatsby-plugin-feed": "^2.0.14",
