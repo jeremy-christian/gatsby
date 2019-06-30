@@ -27,8 +27,16 @@ table {
   line-height: 16px !important;
 }
 .square {
-  background: #fff;
+  /* background: repeating-linear-gradient(
+    45deg,
+    #606dbc,
+    #606dbc 10px,
+    #465298 10px,
+    #465298 20px
+  ); */
+  /* background: #fff; */
   border: 1px solid #999;
+  border-radius: 0px;
   float: left;
   font-size: 24px;
   font-weight: bold;
