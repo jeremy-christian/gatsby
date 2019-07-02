@@ -18,76 +18,21 @@ function shuffle(array) {
   }
 }
 
-class UserRemoteSelect extends React.Component {
-  constructor(props) {
-    super(props)
-    this.lastFetchId = 0
-    this.fetchLetters = debounce(this.fetchLetters, 800)
-  }
-
-  state = {
-    data: [],
-    value: [],
-    fetching: false,
-  }
-
-  fetchLetters = value => {
-    console.log("loading letters", value)
-
-    this.setState({ data: [], fetching: true })
-
-    const data = ["a", "b", "c"].map(char => ({
-      text: char,
-      value: char,
-    }))
-
-    this.setState({ data, fetching: false })
-  }
-
-  handleChange = value => {
-    this.setState({
-      value,
-      data: [],
-      fetching: false,
-    })
-  }
-
-  render() {
-    const { fetching, data, value } = this.state
-    return (
-      <Select
-        mode="multiple"
-        labelInValue
-        value={value}
-        placeholder=""
-        notFoundContent={fetching ? <Spin size="small" /> : null}
-        filterOption={false}
-        onSearch={this.fetchLetters}
-        onChange={this.handleChange}
-      >
-        {data.map(d => (
-          <Option key={d.value}>{d.text}</Option>
-        ))}
-      </Select>
-    )
-  }
-}
-
 function Tile(props) {
   var modifier = scrabbleHelpers.modifiers[props.x][props.y]
-  return <UserRemoteSelect className={`square ${modifier}`} />
+  return (
+    <Input
+      className={`square ${modifier}`}
+      type="text"
+      maxLength="1"
+      data-x={props.x}
+      data-y={props.y}
+      id={`${props.x}-${props.y}`}
+      modifier={modifier}
+      onChange={event => props.onChange(event)}
+    />
+  )
 }
-
-// {/*}<Input
-//   className={`square ${modifier}`}
-//   type="text"
-//   maxLength="1"
-//   x={props.x}
-//   y={props.y}
-//   id={`${props.x}-${props.y}`}
-//   modifier={modifier}
-//   onChange={event => props.onChange(event)}
-// />*/}
 
 function TraySlot(props) {
   return (
@@ -176,7 +121,10 @@ class Game extends React.Component {
 
   tileChange(event) {
     let tiles = this.state.tiles
-    tiles[event.target.y][event.target.x] = event.target.value.toUpperCase()
+    let x = event.target.dataset.x
+    let y = event.target.dataset.y
+    console.log(event.target.dataset.x)
+    tiles[x][y] = event.target.value.toUpperCase()
     this.setState({ tiles: tiles })
     console.log(
       `Tile update: ${
