@@ -22,6 +22,14 @@ ul {
   line-height: 18px !important;
 }
 
+.tray {
+  margin-top: 20px;
+}
+
+.ant-btn {
+  margin-left: 10px;
+}
+
 table {
   font-size: 14px !important;
   line-height: 16px !important;
