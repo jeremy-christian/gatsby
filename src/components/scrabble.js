@@ -12,50 +12,6 @@ import { Modal } from "antd"
 
 const { Option } = Select
 
-class App extends React.Component {
-  state = { visible: false }
-
-  showModal = () => {
-    this.setState({
-      visible: true,
-    })
-  }
-
-  handleOk = e => {
-    console.log(e)
-    this.setState({
-      visible: false,
-    })
-  }
-
-  handleCancel = e => {
-    console.log(e)
-    this.setState({
-      visible: false,
-    })
-  }
-
-  render() {
-    return (
-      <div>
-        <Button type="primary" onClick={this.showModal}>
-          Open Modal
-        </Button>
-        <Modal
-          title="Basic Modal"
-          visible={this.state.visible}
-          onOk={this.handleOk}
-          onCancel={this.handleCancel}
-        >
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-        </Modal>
-      </div>
-    )
-  }
-}
-
 // shuffles array order, used to randomise letter draw order from the 'bag'
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -77,15 +33,17 @@ function Tile(props) {
       modifier={modifier}
       onChange={event => props.onChange(event)}
       onClick={event => props.onClick(event)}
-    />
+    >
+      <Letter />
+    </Button>
   )
 }
 
 function Letter(props) {
   return (
-    <div className="letter">
-      <span>L</span>
-      <span>1</span>
+    <div className="letter" data-char={props.letter} onClick={props.onClick}>
+      <span>{props.letter}</span>
+      <span>{props.score}</span>
     </div>
   )
 }
@@ -108,17 +66,11 @@ class Board extends React.Component {
 
   state = { modal_open: false }
 
-  showModal = () => {
-    console.log("hmmm")
+  showModal(event) {
+    console.log(event)
     this.setState({
       modal_open: true,
-    })
-  }
-
-  handleOk = e => {
-    console.log(e)
-    this.setState({
-      modal_open: false,
+      current_tile: event.currentTarget.dataset,
     })
   }
 
@@ -134,23 +86,25 @@ class Board extends React.Component {
     return (
       <div className="game-board">
         <Modal
-          title="Basic Modal"
+          title="Select Letter"
           visible={this.state.modal_open}
-          onOk={this.handleOk}
           onCancel={this.handleCancel}
           footer={null}
         >
-          <Letter />
+          <div className="letter-select">
+            {scrabbleHelpers.alphabet.map(char => (
+              <Letter
+                letter={char}
+                score={scrabbleHelpers.letterScores[char]}
+                onClick={event => this.props.tileChange(event)}
+              />
+            ))}
+          </div>
         </Modal>
         {row.map((_, y) => (
           <div className="board-row">
             {row.map((_, x) => (
-              <Tile
-                x={x}
-                y={14 - y}
-                onClick={this.showModal}
-                onChange={event => this.props.tileChange(event)}
-              />
+              <Tile x={x} y={14 - y} onClick={event => this.showModal(event)} />
             ))}
           </div>
         ))}
@@ -208,18 +162,21 @@ class Game extends React.Component {
     }
   }
 
-  tileChange(event) {
+  tileChange(event, current_tile) {
     let tiles = this.state.tiles
-    let x = event.target.dataset.x
-    let y = event.target.dataset.y
-    console.log(event.target.dataset.x)
-    tiles[x][y] = event.target.value.toUpperCase()
+    // let x = event.target.dataset.x
+    // let y = event.target.dataset.y
+    // console.log(event.target.dataset.x)
+    // tiles[current_tile.x][current_tile.y] = "foo"
     this.setState({ tiles: tiles })
-    console.log(
-      `Tile update: ${
-        event.target.id
-      } is now '${event.target.value.toUpperCase()}'`
-    )
+    console.log(tiles)
+    console.log(event.currentTarget.dataset.char)
+    // console.log(
+    //   `Tile update: ${
+    //     event.target.id
+    //   } is now
+    //   '${event.target.value.toUpperCase()}'`
+    // )
   }
 
   loadTray() {

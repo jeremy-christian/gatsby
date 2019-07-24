@@ -1,10 +1,10 @@
-var TW = "TW",
+const TW = "TW",
   DL = "DL",
   DW = "DW",
   TL = "TL",
   ST = "ST"
 
-var modifiers = {
+const modifiers = {
   0: {
     0: TW,
     3: DL,
@@ -98,7 +98,21 @@ var modifiers = {
   },
 }
 
-var letterDistribution = [
+const letterScores = {}
+
+function mapLetterScores(arr, int) {
+  arr.forEach(char => (letterScores[char] = int))
+}
+
+mapLetterScores(["E", "A", "I", "O", "N", "R", "T", "L", "S", "U"], 1)
+mapLetterScores(["D", "G"], 2)
+mapLetterScores(["B", "C", "M", "P"], 3)
+mapLetterScores(["F", "H", "V", "W", "Y"], 4)
+mapLetterScores(["K"], 5)
+mapLetterScores(["J", "X"], 8)
+mapLetterScores(["Q", "Z"], 10)
+
+const letterDistribution = [
   Array(9).fill("A"),
   Array(2).fill("B"),
   Array(2).fill("C"),
@@ -128,4 +142,38 @@ var letterDistribution = [
   Array(2).fill("*"),
 ].reduce((a, c) => a.concat(c), [])
 
-export default { modifiers: modifiers, letterDistribution: letterDistribution }
+const alphabet = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+]
+
+export default {
+  modifiers: modifiers,
+  letterDistribution: letterDistribution,
+  letterScores: letterScores,
+  alphabet: alphabet,
+}
