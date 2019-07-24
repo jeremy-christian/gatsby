@@ -8,8 +8,54 @@ import scrabbleWordFinder from "../components/word-finder"
 import scrabbleWordList from "../utils/ScrabbleWordList"
 import { Select, Spin } from "antd"
 import debounce from "lodash/debounce"
+import { Modal } from "antd"
 
 const { Option } = Select
+
+class App extends React.Component {
+  state = { visible: false }
+
+  showModal = () => {
+    this.setState({
+      visible: true,
+    })
+  }
+
+  handleOk = e => {
+    console.log(e)
+    this.setState({
+      visible: false,
+    })
+  }
+
+  handleCancel = e => {
+    console.log(e)
+    this.setState({
+      visible: false,
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        <Button type="primary" onClick={this.showModal}>
+          Open Modal
+        </Button>
+        <Modal
+          title="Basic Modal"
+          visible={this.state.visible}
+          onOk={this.handleOk}
+          onCancel={this.handleCancel}
+        >
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+        </Modal>
+      </div>
+    )
+  }
+}
+
 // shuffles array order, used to randomise letter draw order from the 'bag'
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -21,7 +67,7 @@ function shuffle(array) {
 function Tile(props) {
   var modifier = scrabbleHelpers.modifiers[props.x][props.y]
   return (
-    <Input
+    <Button
       className={`square ${modifier}`}
       type="text"
       maxLength="1"
@@ -30,7 +76,17 @@ function Tile(props) {
       id={`${props.x}-${props.y}`}
       modifier={modifier}
       onChange={event => props.onChange(event)}
+      onClick={event => props.onClick(event)}
     />
+  )
+}
+
+function Letter(props) {
+  return (
+    <div className="letter">
+      <span>L</span>
+      <span>1</span>
+    </div>
   )
 }
 
@@ -50,16 +106,49 @@ class Board extends React.Component {
     super(props)
   }
 
+  state = { modal_open: false }
+
+  showModal = () => {
+    console.log("hmmm")
+    this.setState({
+      modal_open: true,
+    })
+  }
+
+  handleOk = e => {
+    console.log(e)
+    this.setState({
+      modal_open: false,
+    })
+  }
+
+  handleCancel = e => {
+    console.log(e)
+    this.setState({
+      modal_open: false,
+    })
+  }
+
   render() {
     let row = Array(15).fill(null)
     return (
       <div className="game-board">
+        <Modal
+          title="Basic Modal"
+          visible={this.state.modal_open}
+          onOk={this.handleOk}
+          onCancel={this.handleCancel}
+          footer={null}
+        >
+          <Letter />
+        </Modal>
         {row.map((_, y) => (
           <div className="board-row">
             {row.map((_, x) => (
               <Tile
                 x={x}
                 y={14 - y}
+                onClick={this.showModal}
                 onChange={event => this.props.tileChange(event)}
               />
             ))}
