@@ -31,11 +31,8 @@ function Tile(props) {
       data-y={props.y}
       id={`${props.x}-${props.y}`}
       modifier={modifier}
-      onChange={event => props.onChange(event)}
       onClick={event => props.onClick(event)}
-    >
-      <Letter />
-    </Button>
+    />
   )
 }
 
@@ -67,7 +64,7 @@ class Board extends React.Component {
   state = { modal_open: false }
 
   showModal(event) {
-    console.log(event)
+    console.log(event.currentTarget.dataset)
     this.setState({
       modal_open: true,
       current_tile: event.currentTarget.dataset,
@@ -96,7 +93,7 @@ class Board extends React.Component {
               <Letter
                 letter={char}
                 score={scrabbleHelpers.letterScores[char]}
-                onClick={event => this.props.tileChange(event)}
+                onClick={event => this.props.onClick(event, this.state)}
               />
             ))}
           </div>
@@ -169,7 +166,7 @@ class Game extends React.Component {
     // console.log(event.target.dataset.x)
     // tiles[current_tile.x][current_tile.y] = "foo"
     this.setState({ tiles: tiles })
-    console.log(tiles)
+    console.log(current_tile)
     console.log(event.currentTarget.dataset.char)
     // console.log(
     //   `Tile update: ${
