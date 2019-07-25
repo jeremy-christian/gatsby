@@ -1,14 +1,8 @@
 import React from "react"
-import ReactDOM from "react-dom"
 import scrabbleHelpers from "../utils/scrabble_helpers.js"
-import "../styles/index.css"
-import { Link, graphql } from "gatsby"
-import { version, Button, Input } from "antd"
+import { Modal, Button, Input, Select } from "antd"
 import scrabbleWordFinder from "../components/word-finder"
 import scrabbleWordList from "../utils/ScrabbleWordList"
-import { Select, Spin } from "antd"
-import debounce from "lodash/debounce"
-import { Modal } from "antd"
 
 const { Option } = Select
 
@@ -32,13 +26,28 @@ function Tile(props) {
       id={`${props.x}-${props.y}`}
       modifier={modifier}
       onClick={event => props.onClick(event)}
-    />
+    >
+      {props.value ? (
+        <Letter
+          letter={props.value}
+          score={scrabbleHelpers.letterScores[props.value]}
+        />
+      ) : (
+        ""
+      )}
+    </Button>
   )
 }
 
 function Letter(props) {
   return (
-    <div className="letter" data-char={props.letter} onClick={props.onClick}>
+    <div
+      className="letter"
+      data-x={props.x}
+      data-y={props.y}
+      data-char={props.letter}
+      onClick={props.onClick}
+    >
       <span>{props.letter}</span>
       <span>{props.score}</span>
     </div>
@@ -67,7 +76,8 @@ class Board extends React.Component {
     console.log(event.currentTarget.dataset)
     this.setState({
       modal_open: true,
-      current_tile: event.currentTarget.dataset,
+      current_x: event.currentTarget.dataset.x,
+      current_y: event.currentTarget.dataset.y,
     })
   }
 
@@ -92,8 +102,10 @@ class Board extends React.Component {
             {scrabbleHelpers.alphabet.map(char => (
               <Letter
                 letter={char}
+                x={this.state.current_x}
+                y={this.state.current_y}
                 score={scrabbleHelpers.letterScores[char]}
-                onClick={event => this.props.onClick(event, this.state)}
+                onClick={event => this.props.tileChange(event)}
               />
             ))}
           </div>
@@ -101,7 +113,12 @@ class Board extends React.Component {
         {row.map((_, y) => (
           <div className="board-row">
             {row.map((_, x) => (
-              <Tile x={x} y={14 - y} onClick={event => this.showModal(event)} />
+              <Tile
+                x={x}
+                y={14 - y}
+                value={this.props.tiles[x][14 - y]}
+                onClick={event => this.showModal(event)}
+              />
             ))}
           </div>
         ))}
@@ -156,24 +173,16 @@ class Game extends React.Component {
       tray: tray,
       bag: bag,
       score: 0,
+      currentTile: null,
     }
   }
 
   tileChange(event, current_tile) {
     let tiles = this.state.tiles
-    // let x = event.target.dataset.x
-    // let y = event.target.dataset.y
-    // console.log(event.target.dataset.x)
-    // tiles[current_tile.x][current_tile.y] = "foo"
+    let data = event.currentTarget.dataset
+    tiles[data.x][data.y] = data.char
     this.setState({ tiles: tiles })
-    console.log(current_tile)
-    console.log(event.currentTarget.dataset.char)
-    // console.log(
-    //   `Tile update: ${
-    //     event.target.id
-    //   } is now
-    //   '${event.target.value.toUpperCase()}'`
-    // )
+    console.log(`Tile update: ${data.x}-${data.y} is now '${data.char}'`)
   }
 
   loadTray() {
@@ -183,7 +192,10 @@ class Game extends React.Component {
   render() {
     return (
       <div>
-        <Board tileChange={event => this.tileChange(event)} />
+        <Board
+          tiles={this.state.tiles}
+          tileChange={event => this.tileChange(event)}
+        />
         <Tray />
       </div>
     )
