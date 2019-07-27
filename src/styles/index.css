@@ -1,11 +1,11 @@
 @charset "UTF-8";
 html {
-  font-size: 10px;
+  font-size: 10px !important;
 }
 
 @media only screen and (max-width: 500px) {
   html {
-    font-size: 5.5px;
+    font-size: 5.5px !important;
   }
 }
 body {
