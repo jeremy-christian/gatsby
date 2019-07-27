@@ -3,9 +3,16 @@ html {
   font-size: 10px;
 }
 
+@media only screen and (max-width: 375px) {
+  html {
+    font-size: 5.5px;
+  }
+}
 body {
   font: 1rem "Century Gothic", Futura, sans-serif !important;
-  margin: 2rem;
+  justify-content: center;
+  display: flex;
+  margin-top: 2rem;
 }
 
 ol,
