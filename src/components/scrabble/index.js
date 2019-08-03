@@ -50,8 +50,8 @@ class Game extends React.Component {
       bag: bag,
       score: 0,
       modal_open: false,
-      current_x: null,
-      current_y: null,
+      modal_content: null,
+      modal_footer: null,
     }
   }
 
