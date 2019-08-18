@@ -2,6 +2,7 @@ import React from "react"
 import Board from "./board.js"
 import Tray from "./tray.js"
 import Bag from "./bag.js"
+import InfoBoard from "./infoboard.js"
 import { Modal, Button } from "antd"
 import Letter from "./letter.js"
 import scrabbleHelpers from "../../utils/scrabble_helpers.js"
@@ -46,11 +47,24 @@ class Game extends React.Component {
     var bag = scrabbleHelpers.letterDistribution
     shuffle(bag)
 
+    let wordLog = [
+      {
+        author: "example_author",
+        turn: "example_turn",
+        word: "example_word",
+        position: "example_coords",
+        direction: "example_direction",
+        score: "example_score",
+        definition: "example_definition",
+      },
+    ]
+
     // set initial game state
     this.state = {
       tiles: tiles,
       tray: tray,
       bag: bag,
+      wordLog: wordLog,
       score: 0,
       modal_open: false,
       modal_content: null,
@@ -118,11 +132,48 @@ class Game extends React.Component {
     })
   }
 
+  wordCheck(tiles, data) {
+    let sift = w => w.map(c => (c ? c : " "))
+    let vWords = sift([...tiles[data.x]].reverse())
+      .join("")
+      .split(" ")
+      .filter(w => w !== "")
+
+    vWords.forEach(word =>
+      fetch(`https://mydictionaryapi.appspot.com/?define=${word}`)
+        .then(function(response) {
+          if (response.status !== 200) {
+            console.log(
+              "Looks like there was a problem. Status Code: " + response.status
+            )
+            return
+          }
+
+          // Examine the text in the response
+          response.json().then(function(data) {
+            console.log("Word found: ", data)
+          })
+        })
+        .catch(function(err) {
+          console.log("Fetch Error :-S", err)
+        })
+    )
+
+    console.log(vWords)
+  }
+
   tileChange(event) {
     let tiles = this.state.tiles
     let data = event.currentTarget.dataset
     tiles[data.x][data.y] = data.char
-    this.setState({ tiles: tiles, modal_open: false, modal_content: false })
+    this.wordCheck(tiles, data)
+    this.setState({
+      tiles: tiles,
+      modal_open: false,
+      modal_content: false,
+      // errorLog,
+      // wordLog,
+    })
     console.log(`Tile update: ${data.x}-${data.y} is now '${data.char}'`)
   }
 
@@ -153,20 +204,30 @@ class Game extends React.Component {
 
   render() {
     return (
-      <div>
-        <Bag bag={this.state.bag} />
-        <GameModal
-          visible={this.state.modal_open}
-          content={this.state.modal_content}
-          hideModal={event => this.hideModal(event)}
-          footer={this.state.modal_footer}
-        />
-        <Board
-          tiles={this.state.tiles}
-          tileChange={event => this.tileChange(event)}
-          showModal={event => this.showModal(event)}
-        />
-        <Tray tray={this.state.tray} loadTray={event => this.loadTray(event)} />
+      <div className="game">
+        <div className="game-pane">
+          <Bag bag={this.state.bag} />
+          <Tray
+            tray={this.state.tray}
+            loadTray={event => this.loadTray(event)}
+          />
+        </div>
+        <div className="game-pane">
+          <GameModal
+            visible={this.state.modal_open}
+            content={this.state.modal_content}
+            hideModal={event => this.hideModal(event)}
+            footer={this.state.modal_footer}
+          />
+          <Board
+            tiles={this.state.tiles}
+            tileChange={event => this.tileChange(event)}
+            showModal={event => this.showModal(event)}
+          />
+        </div>
+        <div className="game-pane">
+          <InfoBoard wordLog={this.state.wordLog} />
+        </div>
       </div>
     )
   }

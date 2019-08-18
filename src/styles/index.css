@@ -14,6 +14,26 @@ body {
   margin-top: 2rem;
 }
 
+.game {
+  display: flex;
+  justify-content: center;
+}
+.game .game-pane {
+  background-color: #f2f2f2;
+  border-radius: 0.4rem;
+  margin: 1rem;
+  padding: 1rem;
+}
+.game .game-pane:nth-child(1) {
+  width: 25%;
+}
+.game .game-pane:nth-child(2) {
+  width: 50%;
+}
+.game .game-pane:nth-child(3) {
+  width: 25%;
+}
+
 ol,
 ul {
   padding-left: 3rem;
@@ -67,14 +87,6 @@ table {
 }
 
 .square {
-  /* background: repeating-linear-gradient(
-    45deg,
-    #606dbc,
-    #606dbc 10px,
-    #465298 10px,
-    #465298 20px
-  ); */
-  /* background: #fff; */
   position: relative;
   border: 0.1rem solid #999;
   border-radius: 0rem;
@@ -88,6 +100,18 @@ table {
   height: 4.2rem;
   text-transform: uppercase;
 }
+.square.TL {
+  background-color: #1798d2;
+}
+.square.TW {
+  background-color: #e13328;
+}
+.square.DL {
+  background-color: #97cce4;
+}
+.square.DW {
+  background-color: #efada9;
+}
 .square .letter {
   margin: 0.3rem;
 }
@@ -99,22 +123,6 @@ table {
 }
 .letter-select div {
   margin: 0.3rem;
-}
-
-.square.TL {
-  background-color: #1798d2;
-}
-
-.square.TW {
-  background-color: #e13328;
-}
-
-.square.DL {
-  background-color: #97cce4;
-}
-
-.square.DW {
-  background-color: #efada9;
 }
 
 .square:focus {
