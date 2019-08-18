@@ -24,16 +24,19 @@ class Tray extends React.Component {
   }
 
   render() {
-    let tray = Array(7).fill(null)
     return (
       <div className="tray" id="tray">
-        {/*tray input*/}
-        {tray.map((_, y) => (
-          <TrayItem />
+        {this.props.tray.map(char => (
+          <TrayItem value={char} />
         ))}
 
         {/*load tray*/}
-        <Button type="primary" icon="download" trayId="tray">
+        <Button
+          type="primary"
+          icon="download"
+          trayId="tray"
+          onClick={event => this.props.loadTray(event)}
+        >
           Load Tray
         </Button>
       </div>

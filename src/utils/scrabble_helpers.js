@@ -139,7 +139,7 @@ const letterDistribution = [
   Array(1).fill("X"),
   Array(2).fill("Y"),
   Array(1).fill("Z"),
-  Array(2).fill("*"),
+  Array(2).fill(""),
 ].reduce((a, c) => a.concat(c), [])
 
 const alphabet = [

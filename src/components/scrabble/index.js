@@ -1,10 +1,13 @@
 import React from "react"
 import Board from "./board.js"
 import Tray from "./tray.js"
+import Bag from "./bag.js"
 import { Modal, Button } from "antd"
 import Letter from "./letter.js"
 import scrabbleHelpers from "../../utils/scrabble_helpers.js"
+import { Tabs } from "antd"
 
+const { TabPane } = Tabs
 // shuffles array order, used to randomise letter draw order from the 'bag'
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -62,17 +65,36 @@ class Game extends React.Component {
     this.setState({
       modal_open: true,
       modal_content: (
-        <div className="letter-select">
-          {scrabbleHelpers.alphabet.map(char => (
-            <Letter
-              letter={char}
-              x={x}
-              y={y}
-              score={scrabbleHelpers.letterScores[char]}
-              onClick={event => this.tileChange(event)}
-            />
-          ))}
-        </div>
+        <Tabs defaultActiveKey="1">
+          <TabPane tab="Select Letter From Tray" key="1">
+            <div className="letter-select">
+              {this.state.tray
+                .filter(char => typeof char == "string")
+                .map(char => (
+                  <Letter
+                    letter={char}
+                    x={x}
+                    y={y}
+                    score={scrabbleHelpers.letterScores[char]}
+                    onClick={event => this.placeTrayItem(event)}
+                  />
+                ))}
+            </div>
+          </TabPane>
+          <TabPane tab="Select Any Letter" key="2">
+            <div className="letter-select">
+              {scrabbleHelpers.alphabet.map(char => (
+                <Letter
+                  letter={char}
+                  x={x}
+                  y={y}
+                  score={scrabbleHelpers.letterScores[char]}
+                  onClick={event => this.tileChange(event)}
+                />
+              ))}
+            </div>
+          </TabPane>
+        </Tabs>
       ),
       modal_footer: [
         <Button
@@ -104,13 +126,35 @@ class Game extends React.Component {
     console.log(`Tile update: ${data.x}-${data.y} is now '${data.char}'`)
   }
 
+  placeTrayItem(event) {
+    let tiles = this.state.tiles
+    let data = event.currentTarget.dataset
+    let tray = this.state.tray
+    tray[tray.indexOf(data.char)] = null
+    tiles[data.x][data.y] = data.char
+    this.setState({
+      tiles: tiles,
+      modal_open: false,
+      modal_content: false,
+      tray: tray,
+    })
+    console.log(`Tile update: ${data.x}-${data.y} is now '${data.char}'`)
+  }
+
   loadTray() {
     let bag = this.state.bag
+    let tray = this.state.tray.filter(char => typeof char === "string")
+    while (tray.length < 7) {
+      tray.push(bag.pop())
+    }
+    this.setState({ tray: tray, bag: bag })
+    console.log(bag)
   }
 
   render() {
     return (
       <div>
+        <Bag bag={this.state.bag} />
         <GameModal
           visible={this.state.modal_open}
           content={this.state.modal_content}
@@ -122,7 +166,7 @@ class Game extends React.Component {
           tileChange={event => this.tileChange(event)}
           showModal={event => this.showModal(event)}
         />
-        <Tray />
+        <Tray tray={this.state.tray} loadTray={event => this.loadTray(event)} />
       </div>
     )
   }
