@@ -5,7 +5,7 @@ description: Triforce in my pants.
 ---
 
 
-![gif](zelda_gif.gif)
+![gif](zelda_intro.png)
 
 It's 1999 and I'm six years old. My sticky little fingers are wrapped around the light plastic of my N64 controller and I'm about to finally play a game that I've only ever been able to play at my older cousin's house. The game loads up and that's when I'm first hit with Koji Kondo's masterpiece soundtrack. 
 
