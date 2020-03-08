@@ -67,7 +67,7 @@ From the bottom of lakes
 
 to stinging deserts, dank crypts and frozen caves before facing down your foe in a tower dark enough to make Stephen King wet himself.
   
-![dark_dungeon](./dark_dungeon.jpg)
+![dark_dungeon](./dark_dungeon.png)
 
 Its weaves a typical hero's journey into a fable about growing up, taking responsibility, and having the courage to face evil even when all is already lost.
 
