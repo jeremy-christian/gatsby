@@ -20,7 +20,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <Title/>
+
       <article>
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
         <hr
