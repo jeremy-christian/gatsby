@@ -2,7 +2,7 @@
 body {
     background-color: rgb(16,42,55);
     color: rgb(212,205,94);
-    animation: animate-background 6s linear;
+    /* animation: animate-background 6s linear; */
   }
   
   .zelda-container {
