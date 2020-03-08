@@ -9,7 +9,7 @@ description: Triforce in my pants.
 
 It's 1999 and I'm six years old. My sticky little fingers are wrapped around the light plastic of my N64 controller and I'm about to finally play a game that I've only ever been able to play at my older cousin's house. The game loads up and that's when I'm first hit with Koji Kondo's masterpiece soundtrack. 
 
-`youtube: CKA1zCwcYBE`
+`youtube: CtMllWsML5M`
 
 You're immediately plunged into the game world, quickly establishing yourself as a member of a peter-pan style fairy community full of children who never grow older. Your great elder however - the Deku Tree - is quick to lay upon you a great burden: to lift the curse placed upon him and leave your paradise forest, taking up a great quest to aid the princess of Hyrule in the kingdom's protection. 
 
