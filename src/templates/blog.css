@@ -299,7 +299,7 @@ body {
     /* position: absolute; */
     margin: auto;
 	height: 300px;
-	width: 300;
+	width: 300px;
 	left: 50%;
 	top: 40px;
 	animation: voo 6s ease-in-out infinite;
@@ -339,7 +339,7 @@ body {
 	background: #fff;
 	border-radius: 100% 5px 100% 10%;
 	top:18px ;
-	left:195px;
+	left:95px;
 	transform: rotate(-45deg);
 	opacity: 0.7;
 	box-shadow: 0 0 40px rgba(187, 177, 230, 1);
@@ -363,7 +363,7 @@ body {
 	background: #fff;
 	border-radius: 5px 100% 10%;
 	top:18px;
-	left:238px;
+	left:138px;
 	opacity: 0.7;
 	box-shadow: 0 0 40px rgba(187, 177, 230, 1);
 	animation: asa-e 3s infinite;
@@ -386,7 +386,7 @@ body {
 	background: #fff;
 	border-radius: 180% 30% 130% 25%;
 	top:178px;
-	left:202px;
+	left:102px;
 	opacity: 0.7;
 	box-shadow: 0 0 40px rgba(187, 177, 230, 1);
 	animation: asa-p-e 3s linear infinite;
@@ -409,7 +409,7 @@ body {
 	background: #fff;
 	border-radius: 30% 180% 25% 130%;
 	top:174px ;
-	left:266px;
+	left:166px;
 	opacity: 0.7;
 	box-shadow: 0 0 40px rgba(187, 177, 230, 1);
 	animation: asa-p-d 3s linear infinite;
