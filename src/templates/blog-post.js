@@ -7,6 +7,7 @@ import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
 import Title from './title'
 import './blog.css'
+import Navi from './navi'
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
@@ -28,6 +29,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           }}
         />
       </article>
+      <Navi/>
     </Layout>
   )
 }

@@ -295,4 +295,131 @@ body {
   }
   
   
-  
+  .navi {
+	/* position: absolute; */
+	height: 300px;
+	width: 500px;
+	left: 50%;
+	margin-left: -250px;
+	top: 40px;
+	animation: voo 6s ease-in-out infinite;
+}
+
+@keyframes voo{
+	0%, 100% {transform: translateY(0);}
+	50% {transform: translateY(-45px);}
+}
+
+.corpo{
+	position: absolute;
+	height: 90px;
+	width: 90px;
+	background: #D5EDF5;
+	border-radius: 50%;
+	top: 100px;
+	left: 50%;
+	opacity: 0.98;
+	margin-left: -45px;
+	box-shadow: 0 0 20px #A08BF7,
+	0 0 40px rgba(187, 177, 230, 1),
+	0 0 60px rgba(187, 177, 230, 0.6),
+	0 0 80px rgba(187, 177, 230, 0.9),
+	0 0 30px 70px rgba(250, 232, 130, 0.1);
+	animation: cresce 1s infinite;
+}
+
+@keyframes cresce {
+	50% {transform: scale(1.04);}
+}
+
+.asa-g-e{
+	position: absolute;
+	height: 95px;
+	width:65px;
+	background: #fff;
+	border-radius: 100% 5px 100% 10%;
+	top:18px ;
+	left:195px;
+	transform: rotate(-45deg);
+	opacity: 0.7;
+	box-shadow: 0 0 40px rgba(187, 177, 230, 1);
+	animation: asa 3s infinite;
+	transform-origin: 50% 100%;
+}
+
+@keyframes asa {
+	0% {transform: rotate(-65deg);}
+	12.5% {transform: rotate(-90deg);}
+	25% {transform: rotate(-65deg);}
+	50% {transform: rotate(-90deg);}
+	100% {transform: rotate(-65deg);}
+	
+}
+
+.asa-g-d{
+	position: absolute;
+	height: 95px;
+	width:65px;
+	background: #fff;
+	border-radius: 5px 100% 10%;
+	top:18px;
+	left:238px;
+	opacity: 0.7;
+	box-shadow: 0 0 40px rgba(187, 177, 230, 1);
+	animation: asa-e 3s infinite;
+	transform-origin: 50% 100%;
+}
+
+@keyframes asa-e{
+	0% {transform: rotate(65deg);}
+	12.5% {transform: rotate(90deg);}
+	25% {transform: rotate(65deg);}
+	50% {transform: rotate(90deg);}
+	100% {transform: rotate(65deg);}
+	
+}
+
+.asa-p-e{
+	position: absolute;
+	height: 40px;
+	width:30px;
+	background: #fff;
+	border-radius: 180% 30% 130% 25%;
+	top:178px;
+	left:202px;
+	opacity: 0.7;
+	box-shadow: 0 0 40px rgba(187, 177, 230, 1);
+	animation: asa-p-e 3s linear infinite;
+	transform-origin: 100% 0%;
+}
+
+@keyframes asa-p-e {
+	0% {transform: rotate(15deg);}
+	12.5% {transform: rotate(30deg);}
+	25% {transform: rotate(15deg);}
+	50% {transform: rotate(30deg);}
+	100% {transform: rotate(15deg);}
+	
+}
+
+.asa-p-d{
+	position: absolute;
+	height: 40px;
+	width:30px;
+	background: #fff;
+	border-radius: 30% 180% 25% 130%;
+	top:174px ;
+	left:266px;
+	opacity: 0.7;
+	box-shadow: 0 0 40px rgba(187, 177, 230, 1);
+	animation: asa-p-d 3s linear infinite;
+	transform-origin: 50% 0%;
+}
+
+@keyframes asa-p-d {
+	0% {transform: rotate(-15deg);}
+	12.5% {transform: rotate(-30deg);}
+	25% {transform: rotate(-15deg);}
+	50% {transform: rotate(-30deg);}
+	100% {transform: rotate(-15deg);}
+}
