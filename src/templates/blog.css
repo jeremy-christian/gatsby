@@ -2,14 +2,14 @@
 body {
     background-color: rgb(16,42,55);
     color: rgb(212,205,94);
-    /* animation: animate-background 6s linear; */
+    animation: animate-background 6s linear;
   }
   
   .zelda-container {
     width: 768px;
     height: 432px;
-    position: absolute;
-    top: 50%;
+    position: relative;
+    top: 195px;
     left: 50%;
     transform: translate(-50%, -50%);
   }
@@ -296,11 +296,11 @@ body {
   
   
   .navi {
-	/* position: absolute; */
+    /* position: absolute; */
+    margin: auto;
 	height: 300px;
 	width: 500px;
 	left: 50%;
-	margin-left: -250px;
 	top: 40px;
 	animation: voo 6s ease-in-out infinite;
 }

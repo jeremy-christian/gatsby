@@ -51,16 +51,22 @@ This is where the children's story ends and the real story begins. Everything yo
 It's at this moment that you really feel the weight of your task upon you. It's this moment in the game that really for me cements it as one of the greatest of all time. Having the balls to introduce you to a kids game, *as a kid*, and then push you out of that comfort zone by showing you *exactly* what happens when you fail, having the bad guy *win already*, and then asking you to push through a bleak and miserable world to save your friends is a move I haven't seen since.
 
 The story takes you from enchanted forests
-![forest_dungeon](./forest_dungeon.jpg)
- to burning mountains. 
- ![fire_dungeon](./fire_dungeon.jpg)
- From the bottom of lakes
- ![water_dungeon](./water_dungeon.jpg)
-  to stinging deserts, dank crypts and frozen caves before facing down your foe in a tower dark enough to make Stephen King wet himself.
-  
-  ![dark_dungeon](./dark_dungeon.jpg)
 
- But the thing it does best, is weave a typical hero's journey into a fable about growing up, taking responsibility, and having the courage to face evil even when all is already lost.
+![forest_dungeon](./forest_dungeon.jpg)
+
+to burning mountains. 
+
+![fire_dungeon](./fire_dungeon.jpg)
+
+From the bottom of lakes
+
+![water_dungeon](./water_dungeon.jpg)
+
+to stinging deserts, dank crypts and frozen caves before facing down your foe in a tower dark enough to make Stephen King wet himself.
+  
+![dark_dungeon](./dark_dungeon.jpg)
+
+But the thing it does best, is weave a typical hero's journey into a fable about growing up, taking responsibility, and having the courage to face evil even when all is already lost.
 
 Its a great game that I always love to come back to every time it reinvents itself every generation for a new audience.
 
